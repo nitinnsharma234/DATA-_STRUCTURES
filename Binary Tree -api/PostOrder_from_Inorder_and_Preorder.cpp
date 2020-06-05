@@ -1,17 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct Node
-{
-     int data;
-     Node*left;
-     Node*right;
-     Node(int x)
-     {
-          data=x;
-          left=NULL;
-          right=NULL;
-     }
-};
+
 int preorder=0;
 /*Searching the element in Inorder Array*/
 int search(int in[],int start,int end,int Data)
@@ -22,8 +11,8 @@ int search(int in[],int start,int end,int Data)
           {
                return i;
           }
-          return i;
-     }
+         
+     } return i;
 }
 /*Printing the postorder from given Inorder and preorder*/
 void postorder(int in[],int pre[],int start,int end)
