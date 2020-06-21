@@ -1,0 +1,57 @@
+/*Given a Binary Tree having positive and negative nodes, the task is to find maximum sum level in it.*/
+#include<bits/stdc++.h>
+using namespace std;
+struct Node
+{
+     int data;
+     Node*left;
+     Node*right;
+     Node(int x)
+     {
+          data=x;
+          left=NULL;
+          right=NULL;
+     }
+};/*Assuming that the level of the Tree can't exceeded by 10*/
+ static int arr[5],p;
+void Maximum_level_sum(Node*temp,int level)
+{
+     if (!temp)
+     {return;}
+     if (arr[level]==0)
+     {  
+          arr[level]=temp->data;
+     }
+     else if (arr[level]!=0)
+     {    
+          arr[level]=arr[level]+temp->data;
+     }
+     Maximum_level_sum(temp->left,level+1);
+      p=level;
+     Maximum_level_sum(temp->right,level+1);
+    
+}
+void find_maximum()
+{int max=INT_MIN;
+     for(int i=0;i<=p;i++)
+     {
+          if (max<arr[i])
+          {
+               max=arr[i];
+          }
+     }
+     cout<<max;  
+}
+int main()
+{
+ Node*root=new Node(1);
+ root->left=new Node(2);
+ root->left->left=new Node(3);
+ root->left->right=new Node(-4);
+ 
+ root->right= new Node(5);
+ root->right->left=new Node(-6);
+ root->right->right=new Node(7);
+ Maximum_level_sum(root,0);
+ find_maximum();
+}
